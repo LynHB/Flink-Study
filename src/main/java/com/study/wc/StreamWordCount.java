@@ -33,7 +33,7 @@ public class StreamWordCount {
                             out.collect(Tuple2.of(word, 1L));
                         }
                     }
-                }).keyBy(data -> data.f0)
+                }).returns(Types.TUPLE(Types.STRING, Types.LONG)).keyBy(data -> data.f0)
                 .sum(1);
         // 4. 打印
         sum.print();
