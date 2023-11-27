@@ -16,7 +16,7 @@ public class SocketStreamWordCount {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         // 2. 读取文本流：hadoop102表示发送端主机名、7777表示端口号
-        DataStreamSource<String> lineStream = env.socketTextStream("hadoop102", 7777);
+        DataStreamSource<String> lineStream = env.socketTextStream("bigdata-master", 7777);
 
         // 3. 转换、分组、求和，得到统计结果
         SingleOutputStreamOperator<Tuple2<String, Long>> sum = lineStream.flatMap((String line, Collector<Tuple2<String, Long>> out) -> {
